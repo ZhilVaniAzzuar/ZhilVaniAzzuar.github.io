@@ -78,21 +78,25 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20rem;
 }
+
 .home-img img{
-    width: 39vw;
-    animation: floatImages 4s ease-in-out infinite;
+    width: 100%;
+    max-width: 400px;
 }
 .home-content h3{
-    font-size: 3.2rem;
-    font-weight: 700;
+    font-size: 1.7rem;
+    font-weight: 200;
+}
+.home-content h4{
+    font-size: 2.2rem;
+}
+.home-content h5{
+    font-size: 5rem;
 }
 .home-contenth3:nth-of-type(2){
     margin-bottom: 2rem;
-}
-
-.home-content p{
-    font-size: 1.6rem;
 }
 
 .social-media a{
@@ -105,7 +109,8 @@ section{
     border: 0.2rem solid var(--main-color);
     border-radius: 50%;
     font-size: 2rem;
-    margin: 3rem 1.5rem 3rem 0;
+    margin: 1.3rem 1.5rem 3rem 0;
+    transition: 0.5s ease;
 }
 
 .social-media a i {
@@ -126,8 +131,8 @@ span {
     display: inline-block;
     padding: 1rem 2.8rem;
     background: var(--main-color);
-    box-shadow: 0 0 1rem var(--main-color);
-    font-size: 1.6rem;
+    box-shadow: none;
+    font-size: 12px;
     color: var(--second-color);
     letter-spacing: 0.1rem;
     font-weight: 600;
@@ -136,7 +141,7 @@ span {
 }
 
 .btn:hover {
-    box-shadow: none;
+    box-shadow: 0 0 1rem var(--main-color);
 }
 
 .about {
@@ -211,6 +216,10 @@ span {
     transition: 0.5s ease;
 }
 
+.portfolio-box .judul1{
+    font-size: 1.3rem;
+}
+
 .portfolio-box img {
     width: 100%;
     transition: 0.5s ease;
@@ -238,7 +247,7 @@ span {
 }
 
 .portfolio-layer a {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 3.5rem;
@@ -252,6 +261,15 @@ span {
     color: var(--second-color);
 }
 
+.portfolio-layer .icon-holo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-holo a{
+    margin: 5px;
+}
 
 .footer {
     display: flex;
