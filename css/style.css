@@ -1,0 +1,15 @@
+/* ================= MAIN STYLE COMPILER ================= */
+
+/* 1. Base & Global Styles */
+@import url('sections/global.css');
+
+/* 2. Layout Components */
+@import url('sections/header.css');
+@import url('sections/footer.css');
+
+/* 3. Page Sections */
+@import url('sections/home.css');
+@import url('sections/about.css');
+@import url('sections/skill.css');
+@import url('sections/projek.css');
+@import url('sections/portfolio.css');
