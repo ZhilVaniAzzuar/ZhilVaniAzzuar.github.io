@@ -1166,3 +1166,27 @@
 .home-content.reveal-active { transition-delay: 0.1s; }
 .profile-card-container.reveal-active { transition-delay: 0.35s; } /* Kartu masuk belakangan dikit biar dramatis */~
 >>>>>>> Stashed changes
+ty: 1;
+        filter: blur(0);
+        transform: translateY(0) rotateX(0deg) rotateY(0deg);
+    }
+}
+
+@media (max-width: 858px) {
+    .card-appear-animate {
+        animation: mobileEntrance 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+    }
+
+    @keyframes mobileEntrance {
+        0% {
+            opacity: 0;
+            transform: translateY(30px) !important;
+            filter: blur(5px);
+        }
+        100% {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0) !important; 
+        }
+    }
+}
