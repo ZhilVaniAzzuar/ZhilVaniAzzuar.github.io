@@ -17,30 +17,30 @@ document.addEventListener("DOMContentLoaded", () => {
     let navLinks = document.querySelectorAll('header nav a');
 
     window.onscroll = () => {
-        sections.forEach((sec) => {
+        sections.forEach(sec => {
             let top = window.scrollY;
             let offset = sec.offsetTop - 150;
             let height = sec.offsetHeight;
             let id = sec.getAttribute('id');
 
             if (top >= offset && top < offset + height) {
-                navLinks.forEach((link) => {
-                    link.classList.remove('active');
+                // Aktifin navbar
+                navLinks.forEach(links => {
+                    links.classList.remove('active');
+                    document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
                 });
-                let targetLink = document.querySelector('header nav a[href="#' + id + '"]');
-                if (targetLink) targetLink.classList.add('active');
+                
+                // AKTIFKAN ANIMASI DI SINI!
+                sec.classList.add('show-animate');
+            } else {
+                // Kalau mau animasinya ulang terus tiap di-scroll ke atas/bawah, buka baris ini:
+                // sec.classList.remove('show-animate');
             }
         });
 
+        // Sticky header
         let header = document.querySelector('header');
-        if (header) {
-            header.classList.toggle('sticky', window.scrollY > 100);
-        }
-
-        if (window.scrollY > 100 && menuIcon && navbar) {
-            menuIcon.classList.remove('open'); // Menutup menu putar otomatis saat scroll
-            navbar.classList.remove('active');
-        }
+        header.classList.toggle('sticky', window.scrollY > 100);
     };
 
     // ==================== SCROLL REVEAL (Eksklusif Non-About) ====================
@@ -167,3 +167,62 @@ document.addEventListener("DOMContentLoaded", () => {
         if(section) contentObserver.observe(section);
     });
 });
+
+// ==================== CODES REBUILT: HYPER-LUXURY 3D TWO-WAY SCROLL ENGINE ====================
+    // Tembak secara presisi berdasarkan selector asli di file HTML lu bro!
+    const ultimatePremiumElements = document.querySelectorAll([
+        '.home-content', 
+        '.card-appear-animate', 
+        '.about-content', 
+        '.about-timeline-side', 
+        '.skill-glow-card',
+        '.skill .heading',        /* <-- TARGET HEADING SKILL LU */
+        '.projek .heading',
+        '.sub-projects-title',   /* Judul Section Brand */
+        '.sub-project-filter',   /* <--- FIX CODES! Ini Selector Menu Tab "ALL, CHEMICAL, PHARMACY" di HTML lu */
+        '.sub-project-card',     /* Semua Card Portofolio Brand */
+        '.studio-header',        /* Judul Section Studio Video */
+        '.studio-card'           /* Semua Card Video Studio (Baik gambar maupun iframe) */
+    ].join(','));
+
+    let lastEngineScrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Cek bagian Intersection Observer di script.js kamu, perbarui logika callback-nya:
+
+        const engineObserverOptions = {
+            root: null,
+            threshold: 0.15, // Pemicu aktif saat 15% elemen masuk layar
+            rootMargin: "0px 0px -50px 0px" // Memberikan ruang napas di bagian bawah layar
+        };
+
+        const ultimateScrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const element = entry.target;
+
+                if (entry.isIntersecting) {
+                    // KONDISI MASUK (Dari atas maupun dari bawah): Bersihkan semua class exit, pasang active!
+                    element.classList.add('reveal-active');
+                    element.classList.remove('reveal-exit-top', 'reveal-exit-bottom');
+                } else {
+                    // KONDISI KELUAR
+                    element.classList.remove('reveal-active');
+
+                    // Perbaikan Deteksi Arah: Menggunakan boundingClientRect agar akurat saat scroll balik
+                    if (entry.boundingClientRect.top < 0) {
+                        // Elemen lolos ke atas layar (User scroll ke bawah / arah ke Work)
+                        element.classList.add('reveal-exit-top');
+                        element.classList.remove('reveal-exit-bottom');
+                    } else {
+                        // Elemen tenggelam ke bawah layar (User scroll ke atas / arah balik ke Skill)
+                        element.classList.add('reveal-exit-bottom');
+                        element.classList.remove('reveal-exit-top');
+                    }
+                }
+            });
+        }, engineObserverOptions);
+
+    // Daftarkan seluruh elemen inti ke sistem mesin animasi
+    ultimatePremiumElements.forEach(element => {
+        element.classList.add('scroll-animate-premium');
+        ultimateScrollObserver.observe(element);
+    });

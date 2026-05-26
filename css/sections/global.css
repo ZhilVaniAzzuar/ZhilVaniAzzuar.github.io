@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* ================= GLOBAL & BASE STYLES ================= */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700;800;900&display=swap');
 
@@ -78,3 +79,155 @@ section {
 @media (max-width: 480px) {
     html { font-size: 50%; }
 }
+=======
+/* ================= GLOBAL & BASE STYLES ================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #121212;
+    --second-color: #1c1c1c;
+    --text-color: #f5f5f5;
+    --main-color: #c5a059;      
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    position: relative;
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+    position: relative;
+    z-index: 5; 
+}
+
+.heading {
+    text-align: center;
+    font-size: 4.5rem;
+}
+
+.heading span {
+    color: var(--main-color);
+}
+
+/* BACKGROUND ANIMATED POLICE LINE */
+.police-line-bg {
+    position: fixed;
+    top: 7.5rem; 
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 7.5rem);
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 80px,
+        rgba(197, 160, 89, 0.04) 80px,
+        rgba(197, 160, 89, 0.04) 160px
+    );
+    background-size: 226px 226px; 
+    z-index: 1; 
+    pointer-events: none; 
+    animation: movePoliceLine 25s linear infinite; 
+}
+
+@keyframes movePoliceLine {
+    from { background-position: 0 0; }
+    to { background-position: 226px 0; }
+}
+
+/* RESPONSIVE GLOBAL ELEMENT */
+@media (max-width: 1200px) {
+    html { font-size: 55%; }
+}
+@media (max-width: 480px) {
+    html { font-size: 50%; }
+}
+
+
+/* ==========================================================================
+   HYPER-LUXURY 3D TWO-WAY SCROLL ENGINE (V4 FINAL - NAVBAR REVEAL SAFE)
+   ========================================================================== */
+:root {
+    --cinematic-bezier: cubic-bezier(0.34, 1.65, 0.64, 1); /* Efek spring sinematik yang megah */
+    --cinematic-exit: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Base Setup: Objek tersembunyi dengan kedalaman ruang (perspective) besar */
+.scroll-animate-premium {
+    opacity: 0;
+    filter: blur(12px) brightness(0.7);
+    /* Perspective disuntik langsung di elemen agar tidak memutus position:fixed Navbar */
+    transform: perspective(1600px) translateZ(-180px) translateY(80px) rotateX(15deg) scale(0.9);
+    will-change: transform, opacity, filter;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: opacity 1.3s var(--cinematic-bezier),
+                transform 1.4s var(--cinematic-bezier),
+                filter 1.2s ease-out;
+}
+
+/* ==================== 1. STATE MASUK (SUPER MEWAH & REVEAL ACTIVE) ==================== */
+.scroll-animate-premium.reveal-active {
+    opacity: 1;
+    filter: blur(0) brightness(1);
+    transform: perspective(1600px) translateZ(0) translateY(0) rotateX(0deg) scale(1);
+}
+
+/* PROTEKSI IFRAME & VIDEO BOX: Matikan filter & 3D saat aktif agar render video lancar jaya */
+.scroll-animate-premium.reveal-active:has(iframe),
+.scroll-animate-premium.reveal-active .video-box,
+.scroll-animate-premium.reveal-active iframe {
+    filter: none !important;
+    transform: perspective(1600px) translateZ(0) translateY(0) rotateX(0deg) scale(1) !important;
+}
+
+/* ==================== 2. STATE KELUAR KE ATAS (SCROLL DOWN) ==================== */
+.scroll-animate-premium.reveal-exit-top {
+    opacity: 0;
+    filter: blur(8px) brightness(0.65);
+    transform: perspective(1600px) translateZ(-120px) translateY(-70px) rotateX(-12deg) scale(0.93);
+    transition: opacity 0.8s var(--cinematic-exit),
+                transform 0.9s var(--cinematic-exit),
+                filter 0.8s ease-in;
+}
+
+/* ==================== 3. STATE KELUAR KE BAWAH (SCROLL UP) ==================== */
+.scroll-animate-premium.reveal-exit-bottom {
+    opacity: 0;
+    filter: blur(8px) brightness(0.65);
+    transform: perspective(1600px) translateZ(-120px) translateY(70px) rotateX(12deg) scale(0.93);
+    transition: opacity 0.8s var(--cinematic-exit),
+                transform 0.9s var(--cinematic-exit),
+                filter 0.8s ease-in;
+}
+
+/* ==================== STAGGERED DELAY LIST (EFEK OMBAK BERURUTAN) ==================== */
+/* Untuk Grid Portfolio (Chemical, Pharmacy, dll) */
+.sub-projects-grid .sub-project-card:nth-child(1) { transition-delay: 0s; }
+.sub-projects-grid .sub-project-card:nth-child(2) { transition-delay: 0.12s; }
+.sub-projects-grid .sub-project-card:nth-child(3) { transition-delay: 0.22s; }
+.sub-projects-grid .sub-project-card:nth-child(4) { transition-delay: 0.32s; }
+
+/* Untuk Grid Video Studio (Gambar & Iframe) */
+.studio-grid .studio-card:nth-child(1) { transition-delay: 0s; }
+.studio-grid .studio-card:nth-child(2) { transition-delay: 0.12s; }
+.studio-grid .studio-grid .studio-card:nth-child(3) { transition-delay: 0.22s; }
+>>>>>>> Stashed changes

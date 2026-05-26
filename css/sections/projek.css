@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* ============================================================
    CYBER CREATIVE STUDIO DASHBOARD - SPECIAL EDITION
    ============================================================ */
@@ -367,4 +368,620 @@
     }
     .account-meta { margin-top: 0; }
     .long-logo-wrapper { width: 150px; }
+=======
+/* ============================================================
+   CYBER CREATIVE STUDIO DASHBOARD - SPECIAL EDITION
+   ============================================================ */
+
+.projek {
+    background: #08080a;
+    padding: 10rem 9% 12rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    
+    /* FIX SAKTI: Paksa section projek berada di bawah layer skill */
+    z-index: 1 !important; 
+}
+
+/* Background Grid System Match from About */
+.projek::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center;
+    pointer-events: none;
+    
+    /* FIX: Turunin z-index background grid-nya biar ga ngeloncat ke section atas */
+    z-index: -2 !important; 
+}
+
+.projek::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent 10%, #08080a 85%);
+    pointer-events: none;
+    
+    /* FIX: Radial hitam juga di-lock di bawah konten projek */
+    z-index: -1 !important; 
+}
+
+.projek .heading {
+    text-align: center;
+    margin-bottom: 8rem;
+    font-size: 4.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-color);
+    position: relative;
+    z-index: 5;
+}
+
+.projek .heading span {
+    color: var(--main-color);
+}
+
+/* ============================================================
+   INTEGRASI ENGINE ANIMASI GLOBAL (ANTI BLANK / ANTI CRASH)
+   ============================================================ */
+
+/* Menyelaraskan transisi properties bawaan agar seirama dengan global.css */
+.account-card-box,
+.sub-project-card,
+.projek-timeline {
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+                filter 0.8s ease,
+                background 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease !important;
+}
+
+/* Staggered Delay Berurutan untuk Sub-Projects Grid (1 s/d 3) */
+.sub-projects-grid .sub-project-card:nth-child(1) { transition-delay: 0s !important; }
+.sub-projects-grid .sub-project-card:nth-child(2) { transition-delay: 0.12s !important; }
+.sub-projects-grid .sub-project-card:nth-child(3) { transition-delay: 0.24s !important; }
+
+
+/* Timeline Layout Elements */
+.projek-timeline {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+}
+
+.projek-timeline::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 9px;
+    width: 1px;
+    height: calc(100% - 30px);
+    background: linear-gradient(to bottom, var(--main-color) 0%, rgba(255, 255, 255, 0.03) 100%);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 4.5rem;
+    width: 100%;
+}
+
+.timeline-node {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    margin-bottom: 4rem;
+    text-align: left;
+}
+
+.node-dot {
+    position: absolute;
+    left: -4.5rem;
+    top: 4px;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: #08080a;
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 10px var(--main-color);
+    z-index: 6;
+}
+
+.work-date {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--main-color);
+    letter-spacing: 1.5px;
+    background: rgba(197, 160, 89, 0.08);
+    padding: 0.4rem 1.2rem;
+    border-radius: 4px;
+    border: 1px solid rgba(197, 160, 89, 0.15);
+}
+
+.node-info h3 {
+    font-size: 2.4rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin-top: 1.2rem;
+}
+
+.node-info p {
+    font-size: 1.4rem;
+    color: #777;
+    margin-top: 0.3rem;
+}
+
+/* ================= PRESET VIDEO PORTRAIT 9:16 UNIFIED FIX ================= */
+
+/* Standarisasi box video portrait agar serasi baik file mentah .mp4 maupun iframe */
+.projek .video-box.portrait {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16 !important; /* Paksa aspek rasio internasional modern */
+    background: #000000;
+    border-radius: 8px;
+    overflow: hidden;
+    padding-top: 0 !important; /* Buang padding-top persenan pengganggu kuno */
+}
+
+/* Pemotong Tombol UI Bawaan Hosting Video */
+.projek .iframe-cutter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Kasus 1: Untuk Iframe Biasa / TikTok */
+.projek .iframe-cutter iframe {
+    position: absolute;
+    width: 100%;
+    height: 135%; 
+    top: -48px; 
+    left: 0;
+    border: none;
+    object-fit: cover; 
+    pointer-events: none; 
+}
+
+/* Kasus 2: Untuk Iframe Mode Khusus Google Drive Link */
+.video-box.portrait.iframe-mode iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 178% !important;
+    height: 100% !important;
+    border: none;
+    transform: translate(-50%, -50%) scale(1.35) !important;
+    z-index: 2;
+}
+
+/* ============================================================
+   CYBER STUDIO GRID LAYOUT (2 ACCOUNTS PER ROW)
+   ============================================================ */
+
+.accounts-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    gap: 3rem;
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.account-card-box {
+    background: rgba(13, 13, 16, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 2.2rem;
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+}
+
+.account-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1.8rem;
+    width: 100%;
+}
+
+.brand-left {
+    display: flex;
+    gap: 1.2rem; 
+    align-items: center; 
+}
+
+.brand-left-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-align: left;
+}
+
+.long-logo-wrapper {
+    height: 40px; 
+    padding: 0.4rem 1rem; 
+    background: #ffffff; 
+    border-radius: 8px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25), 
+                0 0 10px rgba(255, 255, 255, 0.1); 
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.long-logo-wrapper img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.username {
+    font-size: 1.3rem;
+    color: #ffffff; 
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.mini-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.6rem 1.4rem;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+}
+
+.mini-counter i {
+    color: var(--brand-secondary); 
+    font-size: 1.1rem;
+}
+
+.mini-counter span {
+    font-size: 1.2rem;
+    color: #aaa;
+}
+
+.mini-counter span strong {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+/* ================= HORIZONTAL SLIDER SYSTEM ================= */
+.account-videos-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.account-videos-scroll {
+    display: flex;
+    gap: 1.8rem;
+    overflow-x: auto;
+    padding-bottom: 1.2rem;
+    scroll-behavior: smooth;
+}
+
+/* Di-lock khusus supaya card video projek ga merembet ke card skill */
+.account-videos-scroll .studio-card {
+    flex: 0 0 150px; 
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    padding: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.account-videos-scroll .video-box video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Scrollbar UI Track */
+.account-videos-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+.account-videos-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+.account-videos-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+/* ================= DYNAMIC GLOW HOVER ================= */
+.account-card-box:hover {
+    background: rgba(14, 14, 18, 0.6);
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 30px calc(var(--brand-primary)),
+        0 0 10px calc(var(--brand-secondary));
+}
+
+.account-card-box:hover .long-logo-wrapper {
+    transform: scale(1.04);
+    box-shadow: 0 4px 20px var(--brand-secondary); 
+}
+
+.account-card-box:hover .mini-counter {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--brand-secondary);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.02);
+}
+
+.account-videos-scroll .studio-card:hover {
+    border-color: var(--brand-secondary);
+    transform: scale(1.03);
+}
+
+/* --- Aturan Khusus untuk Kontainer Kartu Google Drive --- */
+.studio-card.gdrive-card {
+    flex: 0 0 220px !important;
+    width: 220px !important;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+    .accounts-grid-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+/* ============================================================
+   SUB-PROJECTS GRID STYLES (ANTI-OVERLOAD OVERVIEW)
+   ============================================================ */
+
+.sub-projects-title {
+    margin-top: 6rem;
+    margin-bottom: 3rem;
+    text-align: left;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2%;
+}
+
+.sub-projects-title h3 {
+    font-size: 2.4rem;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sub-projects-title p {
+    font-size: 1.2rem;
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+/* Container Grid Responsif 3 Kolom */
+.sub-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 6rem;
+    padding: 0 2%;
+    box-sizing: border-box;
+}
+
+/* Card Desain Solid Clean Cyber */
+.sub-project-card {
+    background: #0f0f11;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.sub-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+/* Logo Dashboard Area */
+.sub-logo-box {
+    width: 46px;
+    height: 46px;
+    background: #ffffff; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    padding: 4px; 
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.sub-logo-box img {
+    width: 100%; 
+    height: 100%;
+    object-fit: contain; 
+}
+
+.sub-meta-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.sub-meta-info h4 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0;
+}
+
+.sub-meta-info a {
+    font-size: 1.1rem;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.sub-meta-info a:hover {
+    color: var(--main-color); 
+}
+
+/* Bagian Bawah Info Statistik Ringkas */
+.sub-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 1.2rem;
+}
+
+.sub-status-badge {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #888;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Counter Badge */
+.content-counter-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #888;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.content-counter-badge i {
+    font-size: 0.95rem;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+/* HOVER EFFECT: Card Nyala Idling Up */
+.sub-project-card:hover {
+    border-color: var(--main-color);
+    box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(197, 160, 89, 0.1);
+    background: #111113;
+}
+
+.sub-project-card:hover .sub-logo-box {
+    border-color: var(--main-color);
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.4);
+    transform: scale(1.05); 
+}
+
+.sub-project-card:hover .content-counter-badge {
+    color: var(--main-color);
+    border-color: rgba(197, 160, 89, 0.25);
+    background: rgba(197, 160, 89, 0.04);
+}
+
+.sub-project-card:hover .content-counter-badge i {
+    color: var(--main-color);
+}
+
+/* Opsional: Merapikan margin atasan grid akun Halma */
+.timeline-item .brand-account-grid {
+    margin-top: 3rem;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+    .sub-projects-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 576px) {
+    .sub-projects-grid {
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+    .sub-projects-title {
+        text-align: center;
+    }
+}
+
+
+/* ============================================================
+   FIX MUTLAK: INTEGRASI HEADING WORK TO ENGINE PREMIUM JS
+   ============================================================ */
+
+/* State 1: Standby Awal / Keluar ke Bawah (Scroll Up) */
+.projek .heading,
+.projek .heading.reveal-exit-bottom {
+    opacity: 0 !important;
+    filter: blur(10px) brightness(0.65) !important;
+    transform: perspective(1600px) translateZ(-80px) translateY(40px) rotateX(8deg) scale(0.95) !important;
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+                filter 0.8s ease-in-out !important;
+}
+
+/* State 2: AKTIF - Saat Judul Berada di Area Pandang Layar */
+.projek .heading.reveal-active {
+    opacity: 1 !important;
+    filter: blur(0) brightness(1) !important;
+    transform: perspective(1600px) translateZ(0) translateY(0) rotateX(0) scale(1) !important;
+}
+
+/* State 3: Keluar ke Atas (Scroll Down) */
+.projek .heading.reveal-exit-top {
+    opacity: 0 !important;
+    filter: blur(10px) brightness(0.65) !important;
+    transform: perspective(1600px) translateZ(-120px) translateY(-40px) rotateX(-8deg) scale(0.93) !important;
+>>>>>>> Stashed changes
 }
