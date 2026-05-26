@@ -226,3 +226,176 @@ document.addEventListener("DOMContentLoaded", () => {
         element.classList.add('scroll-animate-premium');
         ultimateScrollObserver.observe(element);
     });
+
+
+// ============================================================
+// INJEKSI INTERAKTIF FILTER JASA EDITING
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectBoxes = document.querySelectorAll('.project-box'); // Menyesuaikan class box project asli lu
+
+    if (filterBtns.length > 0 && projectBoxes.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                btn.classList.add('active');
+
+                const targetFilter = btn.getAttribute('data-filter');
+
+                projectBoxes.forEach(box => {
+                    if (targetFilter === 'all' || box.getAttribute('data-category') === targetFilter) {
+                        box.style.display = 'block';
+                        box.style.opacity = '1';
+                    } else {
+                        box.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+});
+
+// ============================================================
+// ENGINE INTERAKTIF ADVANCED: FILTER & AUTO-HIGHLIGHT TESTIMONI
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+    
+    /* 1. FILTER ENGINE DENGAN EFEK ANIMASI FADE & SCALE */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectBoxes = document.querySelectorAll('.project-box');
+
+    if (filterBtns.length > 0 && projectBoxes.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Ganti class active pada tombol
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                btn.add('active');
+
+                const targetFilter = btn.getAttribute('data-filter');
+
+                projectBoxes.forEach(box => {
+                    // Berikan animasi mengecil & menghilang dulu sebelum disembunyikan
+                    box.style.opacity = '0';
+                    box.style.transform = 'scale(0.8) translateY(20px)';
+                    
+                    setTimeout(() => {
+                        if (targetFilter === 'all' || box.getAttribute('data-category') === targetFilter) {
+                            box.style.display = 'block';
+                            // Munculkan kembali dengan smooth transition
+                            setTimeout(() => {
+                                box.style.opacity = '1';
+                                box.style.transform = 'scale(1) translateY(0)';
+                            }, 50);
+                        } else {
+                            box.style.display = 'none';
+                        }
+                    }, 300); // Sinkron dengan durasi transisi CSS
+                });
+            });
+        });
+    }
+
+    /* 2. AUTO-HIGHLIGHT ENGINE UNTUK 3 CLIENT REVIEW (LOOPING AUTOMATIC) */
+    const testiCards = document.querySelectorAll('.testimonial-card');
+    let currentHighlightIndex = 0;
+    let testimonialInterval;
+
+    function highlightNextTestimonial() {
+        if (testiCards.length === 0) return;
+
+        // Hapus highlight dari card yang aktif sebelumnya
+        testiCards.forEach(card => card.classList.remove('highlighted'));
+
+        // Tambah highlight ke card yang sekarang sesuai index
+        testiCards[currentHighlightIndex].classList.add('highlighted');
+
+        // Geser index ke card berikutnya, kalau udah di akhir balik ke 0 (loop)
+        currentHighlightIndex = (currentHighlightIndex + 1) % testiCards.length;
+    }
+
+    if (testiCards.length > 0) {
+        // Jalankan highlight pertama kali langsung saat page load
+        highlightNextTestimonial();
+
+        // Atur interval perpindahan otomatis setiap 4000ms (4 detik)
+        testimonialInterval = setInterval(highlightNextTestimonial, 4000);
+
+        // Fitur Tambahan: Jika user mengarahkan mouse ke card, stop dulu jalannya autoplay biar bisa dibaca
+        testiCards.forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                clearInterval(testimonialInterval);
+                testiCards.forEach(c => c.classList.remove('highlighted'));
+                card.classList.add('highlighted');
+                currentHighlightIndex = index; // Set index sesuai yang di-hover
+            });
+
+            // Jalankan autoplay lagi kalau mouse user sudah pergi keluar card
+            card.addEventListener('mouseleave', () => {
+                currentHighlightIndex = (currentHighlightIndex + 1) % testiCards.length;
+                testimonialInterval = setInterval(highlightNextTestimonial, 4000);
+            });
+        });
+    }
+});
+
+
+// ============================================================
+// PERFECT ENGINE: TAB FILTER ANTI-STUCK & CLEAN TRANSITION
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const filterButtons = document.querySelectorAll('.project-filter .filter-btn');
+    const projectCards = document.querySelectorAll('.project-grid-container .project-box');
+
+    if (filterButtons.length > 0 && projectCards.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                // Cegah klik ganda bawaan browser
+                e.preventDefault();
+
+                // 1. Bersihkan class active dari tombol filter yang lama
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // 2. Tambahkan class active ke tombol yang baru di-klik
+                button.classList.add('active');
+
+                const selectedFilter = button.getAttribute('data-filter');
+
+                // 3. Jalankan transisi penyaringan card project
+                projectCards.forEach(card => {
+                    // Fade-out halus dulu sebelum dipilah
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95) translateY(10px)';
+                    card.style.transition = 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+
+                    setTimeout(() => {
+                        if (selectedFilter === 'all' || card.getAttribute('data-category') === selectedFilter) {
+                            card.style.display = 'block';
+                            
+                            // Fade-in kembali secara elegant
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1) translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }, 300);
+                });
+            });
+        });
+    }
+
+    // Sistem Hover Video Preview (Tetap Aman)
+    const projectVideos = document.querySelectorAll('.project-video-preview');
+    if (projectVideos.length > 0) {
+        projectVideos.forEach(video => {
+            const cardParent = video.closest('.project-box');
+            if (cardParent) {
+                cardParent.addEventListener('mouseenter', () => { video.play().catch(() => {}); });
+                cardParent.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+            }
+        });
+    }
+});
