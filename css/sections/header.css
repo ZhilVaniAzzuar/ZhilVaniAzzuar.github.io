@@ -39,6 +39,152 @@
     color: var(--main-color);
 }
 
+/* ==========================================================================
+   PREMIUM WORK DROPDOWN ENGINE (INTEGRATED SPECIFICATION)
+   ========================================================================== */
+
+/* Container Utama Dropdown */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Memperbaiki alignment text & icon panah di desktop */
+.nav-dropdown .dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.nav-dropdown .dropdown-trigger i {
+    font-size: 1.8rem;
+    transition: transform 0.3s ease;
+}
+
+/* Box Menu Dropdown (Desktop Mode) */
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 4rem; /* Sejajar dengan margin-left default dari navbar item kamu */
+    background: #0b0b0b; /* Warna latar solid yang sama dengan header sticky */
+    min-width: 200px;
+    border: 0.1rem solid rgba(197, 160, 89, 0.2); /* Border gold tipis premium */
+    border-radius: 0.8rem;
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.8);
+    padding: 1rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 120;
+}
+
+/* Pengaturan Link di Dalam Dropdown */
+.dropdown-content a {
+    display: flex !important;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 1.5rem !important;
+    color: var(--text-color) !important;
+    padding: 1.2rem 2.5rem !important;
+    margin: 0 !important; /* Reset margin-left 4rem bawaan navbar desktop */
+    text-align: left !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Hover Effect Menu Dropdown */
+.dropdown-content a:hover {
+    background: rgba(197, 160, 89, 0.08);
+    color: var(--main-color) !important;
+    padding-left: 3rem !important; /* Animasi bergeser sedikit ke kanan */
+}
+
+/* Hover Trigger Muncul Hanya untuk Layar Desktop */
+@media (min-width: 859px) {
+    .nav-dropdown:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .nav-dropdown:hover .dropdown-trigger,
+    .nav-dropdown:hover .dropdown-trigger i {
+        color: var(--main-color);
+        transform: translateY(0);
+    }
+    
+    .nav-dropdown:hover .dropdown-trigger i {
+        transform: rotate(180deg);
+    }
+}
+
+/* ==========================================================================
+   MOBILE INTEGRATION PATCH (BREAKPOINT DETECTOR: 858px)
+   ========================================================================== */
+@media (max-width: 858px) {
+    .nav-dropdown {
+        display: block;
+        width: 100%;
+    }
+
+    /* Menerapkan animasi scale & delay bawaan mobile kamu ke trigger */
+    .nav-dropdown .dropdown-trigger {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 0;
+        font-size: 2.2rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        opacity: 0;
+        transform: scale(0.9) translateY(-10px);
+        transition: all 0.4s ease;
+    }
+
+    /* Sinkronisasi delay animasi urutan ke-4 di mobile navbar */
+    .navbar.active .nav-dropdown .dropdown-trigger {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        transition-delay: 0.4s;
+    }
+
+    /* Box Menu Dropdown (Mobile Mode Accordion Style) */
+    .dropdown-content {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        background: rgba(0, 0, 0, 0.2) !important;
+        min-width: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        display: none; /* Dikontrol lewat js class .mobile-active */
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transition: none !important;
+    }
+
+    /* Tampilkan sub-menu jika dropdown aktif di HP */
+    .nav-dropdown.mobile-active .dropdown-content {
+        display: block;
+    }
+
+    .nav-dropdown.mobile-active .dropdown-trigger i {
+        transform: rotate(180deg);
+    }
+
+    /* Link Item di Dalam Dropdown pas buka di HP */
+    .dropdown-content a {
+        display: flex !important;
+        justify-content: center !important;
+        font-size: 1.8rem !important;
+        margin: 2rem 0 !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
 #menu-icon {
     font-size: 3.6rem;
     color: var(--text-color);

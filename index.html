@@ -18,15 +18,24 @@
     <div class="police-line-bg"></div>
 
     <header class="header">
-      <a href="#" class="logo">My Portofolio</a>
-      <i class="bx bx-menu" id="menu-icon"></i>
-      <nav class="navbar">
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#skill">Skill</a>
-        <a href="#projek">Work</a>
-        <a href="#kontak">Contact</a>
-      </nav>
+        <a href="#" class="logo">My Portofolio</a>
+            <i class="bx bx-menu" id="menu-icon"></i>
+                <nav class="navbar">
+                    <a href="#home" class="active">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skill">Skill</a>
+                    
+                    <div class="nav-dropdown">
+                    <a class="dropdown-trigger">Work <i class="bx bx-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#projek"><i class="bx bx-grid-alt"></i> Work Showcase</a>
+                        <a href="#work"><i class="bx bx-folder-open"></i> More Projects</a>
+                        <a href="#reviews"><i class="bx bx-star"></i> Client Review</a>
+                    </div>
+                    </div>
+                    
+                    <a href="#kontak">Contact</a>
+                </nav>
     </header>
 
     <section id="home" class="home">
@@ -802,9 +811,14 @@
             </div>
         </div>
     </div>
+</section>
 
 
-    <h2 class="heading scroll-animate-premium">Latest <span>Projects</span></h2>
+
+
+<section class="testi testimonial-wrapper" id="work">
+    
+    <!-- <h3 class="sub-heading scroll-animate-premium">MORE <span>PROJECTS</span></h3> -->
 
     <div class="project-filter">
         <span class="filter-btn active" data-filter="all">All Works</span>
@@ -812,125 +826,191 @@
         <span class="filter-btn" data-filter="photo">Photo & Graphics</span>
     </div>
 
-    <div class="project-grid-container">
-
-    <div class="project-box" data-category="video">
-        <div class="project-media">
-            <video class="project-video-preview" loop muted playsinline>
-                <source src="video/hasil-edit-tiktok.mp4" type="video/mp4">
-            </video>
-            <div class="project-tag">Video</div>
-        </div>
-        <div class="project-info">
-            <h3>TikTok Dynamic Editing</h3>
-            <p>Jasa edit video pendek dengan tambahan dynamic subtitle dan sound fx bombastis.</p>
-        </div>
-    </div>
-
-<div class="project-box" data-category="photo">
-    <div class="project-media">
-        <img src="/assets/images/IMG_3562.WEBP" alt="Photo Design">
-        <div class="project-tag">Graphic Design</div>
-    </div>
-    <div class="project-info">
-        <h3>Cyberpunk Portrait Manipulation</h3>
-        <p>Modifikasi pencahayaan neon, perbaikan detail jari tangan, dan background siber fiksi.</p>
-    </div>
-</div>
-
-<div class="project-box" data-category="photo">
-    <div class="project-media">
-        <img src="/assets/images/IMG_3561.WEBP" alt="Photo Design">
-        <div class="project-tag">Graphic Design</div>
-    </div>
-    <div class="project-info">
-        <h3>Cyberpunk Portrait Manipulation</h3>
-        <p>Modifikasi pencahayaan neon, perbaikan detail jari tangan, dan background siber fiksi.</p>
-    </div>
-</div>
-
-
-<div class="project-box" data-category="video">
-    <div class="project-media">
-        <video class="project-video-preview" loop muted playsinline>
-            <source src="video/hasil-edit-tiktok.mp4" type="video/mp4">
-        </video>
-        <div class="project-tag">Video</div>
-    </div>
-    <div class="project-info">
-        <h3>Cyberpunk Portrait Manipulation</h3>
-        <p>Modifikasi pencahayaan neon, perbaikan detail jari tangan, dan background siber fiksi.</p>
-    </div>
-</div>
-
-<div class="project-box" data-category="video">
-    <div class="project-media">
-        <video class="project-video-preview" loop muted playsinline>
-            <source src="video/hasil-edit-tiktok.mp4" type="video/mp4">
-        </video>
-        <div class="project-tag">Video</div>
-    </div>
-    <div class="project-info">
-        <h3>Cyberpunk Portrait Manipulation</h3>
-        <p>Modifikasi pencahayaan neon, perbaikan detail jari tangan, dan background siber fiksi.</p>
-    </div>
-</div>
-
-</div>
-
-
-    
-
-<div class="testimonial-wrapper">
-        <h3 class="sub-heading scroll-animate-premium">Client <span>Reviews</span></h3>
+    <div class="project-grid-container testimonial-grid">
         
-        <div class="testimonial-grid scroll-animate-premium">
-            <div class="testimonial-card">
-                <div class="testi-quote-icon"><i class="bx bxs-quote-left"></i></div>
-                <p class="testi-comment">"Hasil editan videonya bener-bener gila! Pacing-nya dapet banget, sound effect-nya pas, dan sejak pake jasa edit di sini, views Reels IG gua naik drastis. Recommended parah!"</p>
-                <div class="testi-client-meta">
-                    <div class="testi-avatar">
-                        <img src="images/client1.jpg" alt="Client Avatar">
-                    </div>
-                    <div class="testi-info">
-                        <h4>Krishna</h4>
-                        <span>STUDENT</span>
-                    </div>
-                </div>
-            </div>
+        <div class="project-box testimonial-card premium-project-card scroll-animate-premium" data-category="video" data-drive-id="1eJzMMMgJ9t74PdIVpJgshQJ72ectL0Pd" style="cursor: pointer;">
+            <div class="project-media-wrapper project-media">
+                
+                <img src="/assets/images/review/sil.png" class="project-video-thumbnail" alt="Telkom Mursyil" style="width:100%; height:100%; object-fit:cover;">
 
-            <div class="testimonial-card">
-                <div class="testi-quote-icon"><i class="bx bxs-quote-left"></i></div>
-                <p class="testi-comment">"Pesan manipulasi foto buat branding produk, hasilnya super detail dan rapi banget bahkan sampai ke sela-sela jari kodenya presisi. Gak nyesel order di sini, pengerjaan cepet!"</p>
-                <div class="testi-client-meta">
-                    <div class="testi-avatar">
-                        <img src="images/client2.jpg" alt="Client Avatar">
-                    </div>
-                    <div class="testi-info">
-                        <h4>Mursil</h4>
-                        <span>STUDENT</span>
-                    </div>
+                <div class="premium-play-trigger">
+                    <div class="play-pulse-ring"></div>
+                    <i class="bx bx-play"></i>
                 </div>
-            </div>
 
-            <div class="testimonial-card">
-                <div class="testi-quote-icon"><i class="bx bxs-quote-left"></i></div>
-                <p class="testi-comment">"DARI PEMILIHAN SOUND FX DAN BGM PUNYA DAYA TARIK TERSENDIRI, DAN VIBES NYA TERASA, SEHINGGA KALAU DI POSTING BERPOTENSIAL FYP"</p>
-                <div class="testi-client-meta">
-                    <div class="testi-avatar">
-                        <img src="images/client2.jpg" alt="Client Avatar">
-                    </div>
-                    <div class="testi-info">
-                        <h4>Bulan</h4>
-                        <span>STUDENT</span>
+                <div class="project-tag-badge luxury-badge">Video Editing</div>
+                <div class="project-info-overlay">
+                    <div class="project-meta-info">
+                        <span class="project-number">01 // PROJECT</span>
+                        <h3>Telkom University <span> - Student Project</span></h3>
+                        <div class="project-divider-line"></div>
+                        <p class="project-desc">Editing video kreatif untuk pemenuhan tugas/proyek mahasiswa Telkom University. Berfokus pada struktur penceritaan yang jelas, pacing yang pas, serta penyelarasan audio-visual yang clean.</p>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="project-box testimonial-card premium-project-card scroll-animate-premium" data-category="photo">
+            <div class="project-media-wrapper project-media">
+                <img src="/assets/images/review/design1.WEBP" alt="Photo Design">
+                <div class="project-tag-badge luxury-badge">Graphic Design</div>
+                <div class="project-info-overlay">
+                    <div class="project-meta-info">
+                        <span class="project-number">02 // CAMPAIGN</span>
+                        <h3>Kaybun Dimsum <span> - Independence Day Promo</span></h3>
+                        <div class="project-divider-line"></div>
+                        <p class="project-desc">Desain visual feeds Instagram resmi untuk campaign Hari Kemerdekaan 17 Agustus dari Kaybun Dimsum. Menggunakan elemen grafis yang berani dan layout informatif untuk menarik minat pembeli.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-box testimonial-card premium-project-card scroll-animate-premium" data-category="video" data-drive-id="1vdGq9B5jH7EL2e7NWh_g886hyAR6FEUZ" style="cursor: pointer;">
+            <div class="project-media-wrapper project-media">
+                
+                <img src="/assets/images/review/kris1.png" class="project-video-thumbnail" alt="Project UNPAD Vol II" style="width:100%; height:100%; object-fit:cover;">
+
+                <div class="premium-play-trigger">
+                    <div class="play-pulse-ring"></div>
+                    <i class="bx bx-play"></i>
+                </div>
+
+                <div class="project-tag-badge luxury-badge">Video Editing</div>
+                <div class="project-info-overlay">
+                    <div class="project-meta-info">
+                        <span class="project-number">03 // PROJECT</span>
+                        <h3>UNPAD Student <span> - Video Project – Vol. I</span></h3>
+                        <div class="project-divider-line"></div>
+                        <p class="project-desc">Editing konten video dokumenter/tugas kreatif untuk mahasiswa Universitas Padjadjaran. Menampilkan transisi yang dinamis dan color grading yang mendukung suasana video.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-box testimonial-card premium-project-card scroll-animate-premium" data-category="photo">
+            <div class="project-media-wrapper project-media">
+                <img src="/assets/images/review/design2.WEBP" alt="Photo Design">
+                <div class="project-tag-badge luxury-badge">Graphic Design</div>
+                <div class="project-info-overlay">
+                    <div class="project-meta-info">
+                        <span class="project-number">04 // PROMOTION</span>
+                        <h3>Kaybun Dimsum <span> - Year End Promo</span></h3>
+                        <div class="project-divider-line"></div>
+                        <p class="project-desc">Desain poster digital untuk promo akhir tahun Kaybun Dimsum. Berfokus pada penataan hierarki teks promo agar penawaran diskon langsung terlihat jelas oleh calon konsumen (stopping-power).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-box testimonial-card premium-project-card scroll-animate-premium" data-category="video" data-drive-id="1QOMeMSQOTb_vseewZhKBCTaXHmJs7Ll5" style="cursor: pointer;">
+            <div class="project-media-wrapper project-media">
+                
+                <img src="/assets/images/review/kris2.png" class="project-video-thumbnail" alt="Project UNPAD Vol II" style="width:100%; height:100%; object-fit:cover;">
+
+                <div class="premium-play-trigger">
+                    <div class="play-pulse-ring"></div>
+                    <i class="bx bx-play"></i>
+                </div>
+
+                <div class="project-tag-badge luxury-badge">Video Editing</div>
+                <div class="project-info-overlay">
+                    <div class="project-meta-info">
+                        <span class="project-number">05 // PROJECT</span>
+                        <h3>UNPAD Student <span> - Video Project – Vol. II</span></h3>
+                        <div class="project-divider-line"></div>
+                        <p class="project-desc">Kelanjutan dari seri editing video mahasiswa Universitas Padjadjaran, berfokus pada teknik penyuntingan yang lebih eksploratif, sound design yang immersive, dan visual yang sinematik.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
+    <div id="projectLightbox" class="project-lightbox">
+        <span id="lightboxClose" class="lightbox-close">&times;</span>
+        <div class="lightbox-content-wrapper">
+            <img id="lightboxImg" class="lightbox-element" src="" alt="Full Preview">
+            <video id="lightboxVideo" class="lightbox-element" controls>
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</section>
 
 
+<section class="premium-review-section scroll-animate-premium" id="reviews">
+    <div class="premium-review-glow-core"></div>
+
+    <h3 class="sub-heading">CLIENT <span>REVIEWS</span></h3>
+    
+    <div class="premium-review-frame">
+        <div class="premium-review-track premium-review-engine">
+                
+            <div class="premium-review-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <div class="premium-review-number">01</div>
+                <div class="premium-review-quote"><i class="bx bxs-quote-left"></i></div>
+                <div class="premium-review-body">
+                    <p class="premium-review-comment">"... (No Feedback)"</p>
+                </div>
+                <div class="premium-review-profile">
+                    <div class="premium-review-avatar"><img src="/assets/images/client/defav.avif" alt="Avatar"></div>
+                    <div class="premium-review-meta"><h4>Krishna</h4><span>STUDENT // -</span></div>
+                </div>
+            </div>
+
+            <div class="premium-review-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <div class="premium-review-number">02</div>
+                <div class="premium-review-quote"><i class="bx bxs-quote-left"></i></div>
+                <div class="premium-review-body">
+                    <p class="premium-review-comment">"gacor van mantep keren sesuai ekspektasi puas bgt ga nyesel order dsini enak bngt harga murah kualitas oke"</p>
+                </div>
+                <div class="premium-review-profile">
+                    <div class="premium-review-avatar"><img src="/assets/images/client/mursil.jpeg" alt="Avatar"></div>
+                    <div class="premium-review-meta"><h4>Mursil</h4><span>STUDENT // CONTENT CREATOR</span></div>
+                </div>
+            </div>
+
+            <div class="premium-review-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <div class="premium-review-number">03</div>
+                <div class="premium-review-quote"><i class="bx bxs-quote-left"></i></div>
+                <div class="premium-review-body">
+                    <p class="premium-review-comment">"DARI PEMILIHAN SOUND FX DAN BGM PUNYA DAYA TARIK TERSENDIRI, DAN VIBES NYA TERASA..."</p>
+                </div>
+                <div class="premium-review-profile">
+                    <div class="premium-review-avatar"><img src="/assets/images/client/istri.jpeg" alt="Avatar"></div>
+                    <div class="premium-review-meta"><h4>Bulan</h4><span>STUDENT // ENTHUSIAST</span></div>
+                </div>
+            </div>
+
+            <div class="premium-review-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <div class="premium-review-number">04</div>
+                <div class="premium-review-quote"><i class="bx bxs-quote-left"></i></div>
+                <div class="premium-review-body">
+                    <p class="premium-review-comment">"bagusss bangetttttt bangettt bangetttt, sukaa bangettt sama design nyaaa , sesuaiii dengann requesttt apa yang kitaaa mauuuuu🤍🤍"</p>
+                </div>
+                <div class="premium-review-profile">
+                    <div class="premium-review-avatar"><img src="/assets/images/client/defav.avif" alt="Avatar"></div>
+                    <div class="premium-review-meta"><h4>Andini</h4><span>WORKER // -</span></div>
+                </div>
+            </div>
+
+        </div> 
+    </div> 
+
+    <div class="premium-review-dots">
+        <span class="review-dot active"></span>
+        <span class="review-dot"></span>
+        <span class="review-dot"></span>
+        <span class="review-dot"></span>
+    </div>
 </section>
 
 
@@ -943,18 +1023,82 @@
 
 
 
-    <div class="footer">
-      <div class="footer-text">
-        <p>Zhilvani Azzuar - Portofolio | 2026</p>
-      </div>
-      <div class="footer-iconTop">
-        <a href="#home"><i class="bx bx-up-arrow-circle"></i></a>
+    <!-- REPLACEMENT FOR FOOTER SECTION -->
+    <footer class="footer">
+  <!-- 1. BAGIAN UTAMA: STRUKTUR KOLOM COMPANY -->
+  <div class="footer-main">
+    
+    <!-- Kolom 1: Profil Singkat -->
+    <div class="footer-col col-brand">
+      <a href="#" class="footer-logo">My Portofolio</a>
+      <p class="footer-desc">Professional Video Editor based in Bandung. Crafting high-energy cinematic content, social media campaigns, and premium visual storytelling.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/zhievll/" target="_blank"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/zhilvani-azzuar-8ab1a9328/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://discord.com/users/583308242067914784" target="_blank" id="discord-link" title="Click to Chat & Copy Draft">
+  <i class="bx bxl-discord-alt"></i>
+</a>
+        <a href="https://github.com" target="_blank"><i class="bx bxl-github"></i></a>
       </div>
     </div>
+
+    <!-- Kolom 2: Navigasi Cepat -->
+    <div class="footer-col">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skill">Skills</a></li>
+        <li><a href="#projek">Our Works</a></li>
+      </ul>
+    </div>
+
+    <!-- Kolom 3: Spesialisasi Layanan Video Kamu -->
+    <div class="footer-col">
+      <h3>Services</h3>
+      <ul>
+        <li><a href="#projek">Cinematic Video Editing</a></li>
+        <li><a href="#projek">Social Media Content</a></li>
+        <li><a href="#projek">Commercial & Ads</a></li>
+        <li><a href="#projek">Color Grading & FX</a></li>
+      </ul>
+    </div>
+
+    <!-- Kolom 4: Info Kontak Resmi -->
+    <div class="footer-col">
+      <h3>Connect</h3>
+      <p class="contact-info"><i class="bx bx-envelope"></i> zhilvaniazzuar@gmail.com</p>
+      <p class="contact-info"><i class="bx bx-map"></i> Bandung, Indonesia</p>
+    </div>
+
+  </div>
+
+  <!-- Garis pembatas horizontal tipis -->
+  <hr class="footer-divider">
+
+  <!-- 2. BAGIAN BAWAH: BARIS COPYRIGHT & PANAH ATAS -->
+  <div class="footer-bottom">
+    <div class="copyright-text">
+      <p>&copy; 2026 <span class="brand-name">Zhilvani Azzuar</span>. All Rights Reserved.</p>
+    </div>
+    <div class="footer-iconTop">
+      <a href="#home" title="Back to Top"><i class="bx bx-up-arrow-alt"></i></a>
+    </div>
+  </div>
+</footer>
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="/js/script.js"></script>
+
+
+
+    <div id="premium-video-modal" class="premium-video-modal-overlay">
+        <div class="modal-close-trigger"><i class="bx bx-x"></i></div>
+        <div class="modal-cinema-box">
+            <div id="modal-video-target"></div>
+        </div>
+    </div>
 
   </body>
 </html>

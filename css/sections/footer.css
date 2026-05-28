@@ -1,33 +1,227 @@
-/* ================= FOOTER SECTION STYLES ================= */
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 9%;
-    background: var(--second-color);
+/* ==========================================================================
+   FIXED CORPORATE MULTI-COLUMN FOOTER SYSTEM
+   ========================================================================== */
+
+footer.footer {
     position: relative;
+    width: 100%;
+    background: #090909 !important; /* Memaksa warna latar hitam solid agar tidak tembus garis-garis */
+    padding: 6rem 9% 3rem 9%;
+    border-top: 1px solid rgba(197, 160, 89, 0.15);
+    display: block !important;
+    box-sizing: border-box;
     z-index: 10;
 }
 
-.footer-text p {
-    font-size: 1.6rem;
+/* Layout Grid Utama */
+.footer-main {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    gap: 4rem;
 }
 
+.footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style Kolom Brand/Logo */
+.footer-logo {
+    font-size: 2.4rem;
+    color: var(--text-color) !important;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.footer-desc {
+    font-size: 1.4rem;
+    color: #999;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+/* Icon Sosial Media */
+.footer-socials {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-socials a {
+    width: 4rem;
+    height: 4rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color) !important;
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-socials a:hover {
+    background: var(--main-color);
+    color: #000 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+}
+
+/* Style Judul Kolom */
+.footer-col h3 {
+    font-size: 1.7rem;
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    position: relative;
+    letter-spacing: 0.5px;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    bottom: -0.8rem;
+    left: 0;
+    width: 3.5rem;
+    height: 2px;
+    background: var(--main-color);
+}
+
+/* RESET LIST & LINK (Biar bullet points item ilang) */
+.footer-col ul {
+    list-style: none !important; /* Membuang titik hitam bulat */
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.footer-col ul li {
+    margin-bottom: 1.5rem;
+    list-style: none !important;
+}
+
+.footer-col ul li a {
+    font-size: 1.4rem;
+    color: #aaa !important;
+    transition: all 0.2s ease;
+    text-decoration: none !important; /* Membuang garis bawah biru */
+    display: inline-block;
+}
+
+.footer-col ul li a:hover {
+    color: var(--main-color) !important;
+    padding-left: 5px;
+}
+
+/* Info Kontak */
+.contact-info {
+    font-size: 1.4rem;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info i {
+    color: var(--main-color);
+    font-size: 1.8rem;
+}
+
+/* Garis Pembatas Horisontal */
+.footer-divider {
+    border: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 5rem 0 3rem 0;
+}
+
+/* Bottom Bar Area */
+.footer-bottom {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright-text p {
+    font-size: 1.4rem;
+    color: #777;
+}
+
+.copyright-text .brand-name {
+    color: var(--main-color);
+    font-weight: 500;
+}
+
+/* Tombol Back to Top */
 .footer-iconTop a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 0.8rem;
-    background: var(--main-color);
+    width: 4.5rem;
+    height: 4.5rem;
+    background: rgba(197, 160, 89, 0.08);
+    border: 1px solid rgba(197, 160, 89, 0.2);
     border-radius: 0.8rem;
-    transition: 0.5s ease;
-}
-
-.footer-iconTop a:hover {
-    box-shadow: 0 0 1rem var(--main-color);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    text-decoration: none;
 }
 
 .footer-iconTop a i {
-    font-size: 2.4rem;
-    color: var(--bg-color);
+    font-size: 2.2rem;
+    color: var(--main-color);
+    transition: transform 0.3s ease;
+}
+
+.footer-iconTop a:hover {
+    background: var(--main-color);
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+    transform: translateY(-5px);
+}
+
+.footer-iconTop a:hover i {
+    color: #090909;
+    transform: translateY(-2px);
+}
+
+/* Responsive Tablet & HP */
+@media (max-width: 992px) {
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+}
+
+@media (max-width: 858px) {
+    footer.footer {
+        padding: 5rem 5% 3rem 5% !important;
+    }
+    
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+
+    .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-col, .footer-logo, .footer-socials {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column-reverse;
+        gap: 2.5rem;
+        text-align: center;
+    }
 }

@@ -9,6 +9,7 @@
     overflow: hidden;
 }
 
+
 /* Kolom Teks Konten */
 .home-content {
     flex: 1;                 
@@ -126,6 +127,11 @@
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Ditambahkan transition default agar flip-nya smooth */
+}
+
+.profile-card-container:hover .profile-card {
+    transform: rotateY(180deg);
 }
 
 .card-side {
@@ -153,7 +159,7 @@
 
 .card-back-side { 
     background: linear-gradient(145deg, #0f0f0f, #151515); 
-    transform: rotateY(180deg) !important; 
+    transform: rotateY(180deg); /* DIUBAH: Hapus !important agar engine animasi rotasi tidak terkunci */
     justify-content: space-between; 
     position: relative; 
 }
@@ -530,12 +536,12 @@
 }
 
 /* KONDISI BASE KHUSUS CONTAINER KARTU AGAR JALAN SYNC DENGAN ENGINE */
+/* DIUBAH: Menggunakan translateY standar tanpa translateZ/X ekstrem saat init agar browser tidak auto-scroll ke bawah saat refresh */
 .profile-card-container.scroll-animate-premium {
-    /* Mengunci transform awal miring cinematic 3D saat off-screen */
-    transform: perspective(1200px) translateZ(-150px) translateY(40px) rotateX(15deg) rotateY(-12deg);
+    transform: translateY(40px);
 }
 .home-content.scroll-animate-premium {
-    transform: perspective(1200px) translateZ(-80px) translateY(30px);
+    transform: translateY(30px);
 }
 
 /* -----------------------------------------------------------
@@ -544,14 +550,13 @@
 .home-content.scroll-animate-premium.reveal-active {
     opacity: 1;
     filter: blur(0) brightness(1);
-    transform: perspective(1200px) translateZ(0) translateY(0) rotateX(0deg);
+    transform: translateY(0);
 }
 
 .profile-card-container.scroll-animate-premium.reveal-active {
     opacity: 1;
     filter: blur(0) brightness(1);
-    /* Balik ke koordinat aslinya secara natural tanpa nabrak keyframe luar */
-    transform: perspective(1200px) translateZ(0) translateY(0) rotateX(0deg) rotateY(0deg) !important;
+    transform: translateY(0) !important;
 }
 
 /* -----------------------------------------------------------
@@ -560,13 +565,13 @@
 .home-content.scroll-animate-premium.reveal-exit-top {
     opacity: 0;
     filter: blur(8px) brightness(0.65);
-    transform: perspective(1200px) translateZ(-100px) translateY(-50px) rotateX(-8deg);
+    transform: translateY(-50px);
 }
 
 .profile-card-container.scroll-animate-premium.reveal-exit-top {
     opacity: 0;
     filter: blur(8px) brightness(0.65);
-    transform: perspective(1200px) translateZ(-150px) translateY(-60px) rotateX(-15deg) rotateY(10deg) !important;
+    transform: translateY(-60px) !important;
 }
 
 /* -----------------------------------------------------------
@@ -575,13 +580,13 @@
 .home-content.scroll-animate-premium.reveal-exit-bottom {
     opacity: 0;
     filter: blur(8px) brightness(0.65);
-    transform: perspective(1200px) translateZ(-100px) translateY(50px) rotateX(8deg);
+    transform: translateY(50px);
 }
 
 .profile-card-container.scroll-animate-premium.reveal-exit-bottom {
     opacity: 0;
     filter: blur(8px) brightness(0.65);
-    transform: perspective(1200px) translateZ(-150px) translateY(60px) rotateX(15deg) rotateY(-10deg) !important;
+    transform: translateY(60px) !important;
 }
 
 /* Efek Staggered Delay (Masuk Bergantian Mewah) */
