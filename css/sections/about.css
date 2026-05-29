@@ -28,7 +28,7 @@
 
 .about-container {
     display: flex;
-    align-items: center; /* <-- GANTI INI dari flex-start ke center */
+    align-items: center; 
     justify-content: space-between;
     width: 100%;
     gap: 6rem;
@@ -56,7 +56,7 @@
 
 .tag-cyber {
     font-size: 1.1rem;
-    color: var(--main-color);
+    color: var(--main-color, #c5a059);
     background: rgba(197, 160, 89, 0.04);
     border: 1px solid rgba(197, 160, 89, 0.2);
     padding: 0.5rem 1.2rem;
@@ -94,13 +94,6 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.01);
     padding: 1.2rem 1.5rem;
     border-radius: 0 10px 10px 0;
-    transition: all 0.3s ease;
-}
-
-.detail-glass-card:hover {
-    background: linear-gradient(90deg, rgba(197, 160, 89, 0.06) 0%, rgba(255, 255, 255, 0.00) 100%);
-    border-left-color: var(--main-color);
-    transform: translateX(5px);
 }
 
 .detail-icon-wrapper {
@@ -112,7 +105,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--main-color); /* Berubah jadi warna emas utamamu */
+    color: var(--main-color, #c5a059);
     font-size: 1.6rem;
     flex-shrink: 0;
 }
@@ -124,7 +117,7 @@
 
 .detail-text-content h5 {
     font-size: 1.1rem;
-    color: var(--main-color);
+    color: var(--main-color, #c5a059);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0 0 0.2rem 0;
@@ -132,7 +125,7 @@
 
 .detail-text-content span {
     font-size: 1.4rem;
-    color: var(--text-color);
+    color: var(--text-color, #fff);
     font-weight: 500;
 }
 
@@ -159,7 +152,7 @@
     top: 10px;
     bottom: 10px;
     width: 2px;
-    background: linear-gradient(to bottom, var(--main-color) 0%, rgba(197, 160, 89, 0.1) 100%);
+    background: linear-gradient(to bottom, var(--main-color, #c5a059) 0%, rgba(197, 160, 89, 0.1) 100%);
 }
 
 .timeline-item {
@@ -170,13 +163,13 @@
 .timeline-dot {
     position: absolute;
     left: -2.4rem;
-    top: 2.2rem; /* <-- Sesuaikan jadi sekitar 2.2rem atau 2.3rem biar lurus presisi sama box tahun */
+    top: 2.2rem; 
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background: #121212;
-    border: 3px solid var(--main-color);
-    box-shadow: 0 0 10px var(--main-color);
+    border: 3px solid var(--main-color, #c5a059);
+    box-shadow: 0 0 10px var(--main-color, #c5a059);
     z-index: 10;
     transition: all 0.3s ease;
 }
@@ -192,7 +185,7 @@
 }
 
 .timeline-item:hover .timeline-dot {
-    background: var(--main-color);
+    background: var(--main-color, #c5a059);
     transform: scale(1.2);
 }
 
@@ -211,7 +204,7 @@
 .time-year {
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--main-color);
+    color: var(--main-color, #c5a059);
     background: rgba(197, 160, 89, 0.1);
     padding: 0.2rem 0.8rem;
     border-radius: 4px;
@@ -221,7 +214,7 @@
     font-size: 1rem;
     font-weight: 700;
     color: #fff;
-    background: linear-gradient(90deg, #b0853a, var(--main-color), #f3d498, #b0853a);
+    background: linear-gradient(90deg, #b0853a, var(--main-color, #c5a059), #f3d498, #b0853a);
     background-size: 300% 100%;
     padding: 0.3rem 0.8rem;
     border-radius: 4px;
@@ -236,7 +229,7 @@
 
 .timeline-card h4 {
     font-size: 1.6rem;
-    color: var(--text-color);
+    color: var(--text-color, #fff);
     margin: 0 0 0.3rem 0;
     font-weight: 600;
 }
@@ -250,7 +243,7 @@
     position: absolute;
     width: 6px;
     height: 6px;
-    border-color: var(--main-color);
+    border-color: var(--main-color, #c5a059);
     border-style: solid;
     opacity: 0.15;
     transition: all 0.4s ease;
@@ -259,39 +252,52 @@
 .top-left { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
 .bottom-right { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
 
-/* ==========================================================================
-   INTERSECTION OBSERVER SCROLL ANIMATIONS SYSTEM
-   ========================================================================== */
-.scroll-animate {
-    opacity: 0;
-    transform: translateY(30px);
-    filter: blur(4px);
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
-                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
-                filter 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    transition-delay: calc(var(--delay, 1) * 0.12s);
+/* ==================== TIMELINE LOGO STYLE ==================== */
+.timeline-company-header {
+    display: flex;
+    align-items: center; 
+    gap: 1.5rem; 
+    margin-top: 0.5rem;
 }
 
-.timeline-line.scroll-animate {
-    height: 0% !important;
-    transform: none !important;
-    filter: none !important;
-    transition: height 1.5s cubic-bezier(0.77, 0, 0.175, 1);
-    transition-delay: calc(var(--delay, 1) * 0.15s);
+/* UPGRADE BULAT & AKZEN EMAS ANTI-NYARU */
+.company-logo-wrapper {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.12) 0%, rgba(255, 255, 255, 0.01) 100%); 
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 50%; /* Ubah jadi bulat biar estetiknya mewah */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    flex-shrink: 0; 
+    box-shadow: inset 0 0 10px rgba(197, 160, 89, 0.15), 0 4px 15px rgba(0,0,0,0.5);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* Trigger State Aktif */
-.about.active-view .scroll-animate {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
+.company-logo-wrapper img {
+    width: 82%;
+    height: 82%;
+    object-fit: contain; 
+    padding: 0.1rem; 
+    /* TRIK SULAP EDITOR: Paksa logo ngebland emas/putih transparan ikut background */
+    filter: grayscale(1) brightness(1.4) contrast(1.2);
+    mix-blend-mode: lighten; 
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.about.active-view .timeline-line.scroll-animate {
-    height: calc(100% - 20px) !important;
-    opacity: 1;
+/* Efek Mekanik Cinematic pas Card Di-Hover */
+.timeline-item:hover .company-logo-wrapper {
+    background: rgba(197, 160, 89, 0.25);
+    border-color: var(--main-color, #c5a059);
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
+    transform: rotate(360deg); /* Spinner roll lens */
 }
 
+.timeline-item:hover .company-logo-wrapper img {
+    filter: grayscale(0) brightness(1.1) contrast(1); /* Warna asli balik tipis pas kursor masuk */
+}
 /* --- RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 858px) {
     .about-container { flex-direction: column; gap: 4rem; }
@@ -300,51 +306,81 @@
     .about { padding: 8rem 5% 4rem; }
 }
 
-/* ==================== TIMELINE LOGO STYLE (FOR PNG WEB) ==================== */
-.timeline-company-header {
-    display: flex;
-    align-items: center; 
-    gap: 1.5rem; 
-    margin-top: 0.5rem;
+/* ==========================================================================
+   ULTRA HYPER-CINEMATIC ENGINE V2 (THE "WAH" SPEED-RAMP)
+   ========================================================================== */
+#about, .about {
+    perspective: 2500px; /* Ruang 3D super dalam biar dorongannya ekstrem */
 }
 
-.company-logo-wrapper {
-    width: 45px;
-    height: 45px;
-    background: rgba(197, 160, 89, 0.05); /* Glow emas tipis */
-    border: 1px solid rgba(197, 160, 89, 0.2);
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Potong gambar kalau melebih batas border-radius */
-    flex-shrink: 0; /* Mengunci ukuran box biar gak gepeng saat teks panjang */
-    transition: all 0.3s ease;
+/* STATE AWAL: NGUMPET DI BALIK LENSA CAMERA (BLUR PARAH + MUNDUR JAUH) */
+.about-content.scroll-animate-premium,
+.about-timeline-side.scroll-animate-premium {
+    opacity: 0 !important;
+    filter: blur(40px) brightness(0) contrast(2); /* Shutter tertutup & bokeh hancur */
+    transform: translateY(180px) translateZ(-500px) rotateX(35deg) scale(0.65); /* Terlempar ke belakang */
+    will-change: transform, opacity, filter;
+    
+    /* Kurva Transisi Speed-Ramp (Hentakan Lambat-Cepat-Lambat ala Ramping Editor Pro) */
+    transition: opacity 1.6s cubic-bezier(0.19, 1, 0.22, 1),
+                transform 1.9s cubic-bezier(0.19, 1, 0.22, 1),
+                filter 1.6s cubic-bezier(0.19, 1, 0.22, 1) !important;
 }
 
-/* Kunci utama pengatur gambar PNG dari web */
-.company-logo-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Memastikan logo PNG proporsional dan tidak terdistorsi */
-    padding: 0.4rem; /* Memberikan space/jarak nafas gambar dari border box gold */
+/* Delay Pemisah Sinematik Sisi Kiri & Kanan biar gak kaku muncul barengan */
+.about-timeline-side.scroll-animate-premium {
+    transition-delay: 0.18s !important;
 }
 
-.company-text-meta {
-    flex: 1;
+/* STATE AKTIF: JEBRET! MENYERANG MAJU FOKUS TAJAM KE DEPAN MATA */
+.about-content.reveal-active,
+.about-timeline-side.reveal-active {
+    opacity: 1 !important;
+    filter: blur(0px) brightness(1) contrast(1) !important;
+    transform: translateY(0) translateZ(0) rotateX(0deg) scale(1) !important;
 }
 
-.timeline-card h4 {
-    margin: 0 0 0.2rem 0 !important;
+/* Animasi Garis Emas Timeline otomatis memanjang kayak Laser Scan */
+.about-timeline-side.scroll-animate-premium .timeline-line {
+    height: 0% !important;
+    opacity: 0;
+    transition: height 2.2s cubic-bezier(0.19, 1, 0.22, 1) !important;
+    transition-delay: 0.6s !important; /* Mulai jalan setelah card utama mendarat */
 }
 
-.timeline-card p {
-    margin: 0 !important;
+.about-timeline-side.reveal-active .timeline-line {
+    height: calc(100% - 20px) !important;
+    opacity: 1 !important;
+    background: linear-gradient(to bottom, var(--main-color, #c5a059) 0%, rgba(197, 160, 89, 0.8) 50%, rgba(197, 160, 89, 0.1) 100%);
+    box-shadow: 0 0 25px rgba(197, 160, 89, 0.7);
 }
 
-/* Efek Hover Nyala Core Glow */
-.timeline-item:hover .company-logo-wrapper {
-    background: rgba(197, 160, 89, 0.15);
-    border-color: var(--main-color);
-    box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+/* HOVER KARTU DETAIL (Efek Membal Pop-Up) */
+.detail-glass-card {
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                background 0.4s ease, 
+                border-color 0.4s ease,
+                box-shadow 0.4s ease !important;
+}
+
+.detail-glass-card:hover {
+    transform: translateX(12px) scale(1.03) !important;
+    background: linear-gradient(90deg, rgba(197, 160, 89, 0.09) 0%, rgba(197, 160, 89, 0.01) 100%) !important;
+    border-left-color: var(--main-color, #c5a059) !important;
+    box-shadow: -8px 8px 25px rgba(197, 160, 89, 0.08);
+}
+
+/* STATE EXIT: KETIKA USER SCROLL LEWAT (Dinamis Atas & Bawah) */
+.about-content.reveal-exit-bottom,
+.about-timeline-side.reveal-exit-bottom {
+    opacity: 0 !important;
+    filter: blur(25px) brightness(0.3);
+    transform: translateY(150px) translateZ(-300px) rotateX(25deg) scale(0.8) !important;
+}
+
+.about-content.reveal-exit-top,
+.about-timeline-side.reveal-exit-top {
+    opacity: 0 !important;
+    filter: blur(25px) brightness(0.3);
+    transform: translateY(-150px) translateZ(-300px) rotateX(-25deg) scale(0.8) !important;
 }

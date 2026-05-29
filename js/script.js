@@ -21,13 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
-    // Engine Klik Dropdown "More Account Handle" (Support Desktop, Mobile & Icon Chevron)
     if (dropdownTrigger && navDropdown) {
         dropdownTrigger.addEventListener('click', (e) => {
-            e.stopPropagation(); // Biar gak ketutup otomatis karena click handler dokumen di bawah
+            e.stopPropagation();
             navDropdown.classList.toggle('mobile-active');
             
-            // Putar ikon panah pas menu mekar
             const chevron = dropdownTrigger.querySelector('.bx-chevron-down');
             if (chevron) {
                 chevron.style.transform = navDropdown.classList.contains('mobile-active') ? 'rotate(180deg)' : 'rotate(0deg)';
@@ -35,14 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Tutup laci dropdown akun otomatis kalau user klik area kosong di mana saja
         document.addEventListener('click', () => {
             navDropdown.classList.remove('mobile-active');
             const chevron = dropdownTrigger.querySelector('.bx-chevron-down');
             if (chevron) chevron.style.transform = 'rotate(0deg)';
         });
     }
-
 
     // ==================== 2. ACTIVE NAVBAR LINK ON SCROLL & STICKY HEADER ====================
     const sections = document.querySelectorAll('section');
@@ -67,12 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Sticky Header Effect
         if (header) {
             header.classList.toggle('sticky', window.scrollY > 100);
         }
-    }, { passive: true }); // Mengoptimalkan performa scroll browser mobile
-
+    }, { passive: true });
 
     // ==================== 3. SCROLL REVEAL (Eksklusif Elemen Statis Non-Grid) ====================
     if (typeof ScrollReveal !== 'undefined') {
@@ -87,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ScrollReveal().reveal('.home-content p', { origin: 'right' });
     }
 
-
     // ==================== 4. ANIMASI TYPED JS ====================
     if (document.querySelector('.typed') && typeof Typed !== 'undefined') {
         new Typed('.typed', {
@@ -98,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
             loop: true
         });
     }
-
 
     // ==================== 5. 3D CARD HOVER & FLIP ENGAGEMENT ====================
     const container = document.querySelector('.profile-card-container'); 
@@ -134,8 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
-    // ==================== 6. HYPER-LUXURY 3D TWO-WAY SCROLL ENGINE (INTERSECTION OBSERVER) ====================
+    // ==================== 6. HYPER-LUXURY 3D TWO-WAY SCROLL ENGINE (FIX BLANK) ====================
     const ultimatePremiumElements = document.querySelectorAll([
         '.home-content', 
         '.card-appear-animate', 
@@ -144,12 +135,13 @@ document.addEventListener("DOMContentLoaded", () => {
         '.skill-glow-card',
         '.skill .heading', 
         '.projek .heading',
-        '.premium-project-card', /* Ditambahkan untuk mengontrol kartu testimonial/projek secara halus */
+        '.premium-project-card', 
         '.sub-projects-title',   
         '.sub-project-filter',   
         '.sub-project-card',     
         '.studio-header',        
-        '.studio-card'           
+        '.studio-card',
+        '.premium-review-section'
     ].join(','));
 
     if (ultimatePremiumElements.length > 0) {
@@ -157,25 +149,30 @@ document.addEventListener("DOMContentLoaded", () => {
             entries.forEach(entry => {
                 const element = entry.target;
 
-                // Cegah intervensi paksa pada area review slider
-                if (element.classList.contains('premium-review-section')) return;
-
                 if (entry.isIntersecting) {
                     element.classList.add('reveal-active');
                     element.classList.remove('reveal-exit-top', 'reveal-exit-bottom');
+                    
+                    // Kalau section review ketemu, langsung paksa bangun dan lepas opacity blurnya
+                    if (element.classList.contains('premium-review-section')) {
+                        element.classList.add('active-scroll');
+                    }
                 } else {
-                    element.classList.remove('reveal-active');
+                    // Jangan matikan section review pas user scroll biar gak kedip blank
+                    if (!element.classList.contains('premium-review-section')) {
+                        element.classList.remove('reveal-active');
 
-                    if (entry.boundingClientRect.top < 0) {
-                        element.classList.add('reveal-exit-top');
-                        element.classList.remove('reveal-exit-bottom');
-                    } else {
-                        element.classList.add('reveal-exit-bottom');
-                        element.classList.remove('reveal-exit-top');
+                        if (entry.boundingClientRect.top < 0) {
+                            element.classList.add('reveal-exit-top');
+                            element.classList.remove('reveal-exit-bottom');
+                        } else {
+                            element.classList.add('reveal-exit-bottom');
+                            element.classList.remove('reveal-exit-top');
+                        }
                     }
                 }
             });
-        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+        }, { threshold: 0.05, rootMargin: "0px 0px -40px 0px" });
 
         ultimatePremiumElements.forEach(element => {
             element.classList.add('scroll-animate-premium');
@@ -183,13 +180,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
-    // ==================== 7. TAB FILTER ENGINE (DYNAMIC RESOLUTION COUPLING) ====================
+    // ==================== 7. TAB FILTER ENGINE (ANTI-STUCK GRID & DISPLAY FIX) ====================
     const filterContainers = document.querySelectorAll('.project-filter, .sub-project-filter');
     
     filterContainers.forEach(container => {
         const buttons = container.querySelectorAll('.filter-btn');
-        // Cari grid target terdekat dari container filternya
         const sectionTarget = container.closest('section');
         const cards = sectionTarget ? sectionTarget.querySelectorAll('.project-box, .sub-project-card, .premium-project-card') : [];
 
@@ -204,7 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const selectedFilter = button.getAttribute('data-filter');
 
                 cards.forEach(card => {
-                    // Fade-out animasi transisi awal singkat
                     card.style.opacity = '0';
                     card.style.transform = 'scale(0.95) translateY(12px)';
                     card.style.transition = 'all 0.35s cubic-bezier(0.25, 1, 0.5, 1)';
@@ -215,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         card.classList.contains(selectedFilter);
 
                         if (isMatch) {
+                            card.style.display = ''; // Kembalikan ke display default CSS (grid/flex bawaan)
                             card.classList.remove('hide-smooth-patch');
                             card.classList.add('show-smooth-patch');
                             
@@ -223,6 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 card.style.transform = 'scale(1) translateY(0)';
                             }, 50);
                         } else {
+                            card.style.display = 'none';
                             card.classList.remove('show-smooth-patch');
                             card.classList.add('hide-smooth-patch');
                         }
@@ -231,7 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
-
 
     // ==================== 8. HYPER-INTERACTIVE CLIENT REVIEW ENGINE (SLIDER) ====================
     const reviewSection = document.querySelector('.premium-review-section');
@@ -242,23 +237,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (reviewSection && reviewTrack && reviewCards.length > 0) {
         let currentReviewIndex = 0;
         let reviewAutoplayTimer;
-
-        const reviewObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    reviewSection.classList.add('active-scroll');
-                    
-                    setTimeout(() => {
-                        updateReviewSlider(0);
-                        startReviewAutoplay();
-                    }, 800);
-
-                    reviewObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        reviewObserver.observe(reviewSection);
 
         function updateReviewSlider(index) {
             if (index < 0) index = reviewCards.length - 1;
@@ -303,6 +281,10 @@ document.addEventListener("DOMContentLoaded", () => {
             clearInterval(reviewAutoplayTimer);
         }
 
+        // Jalankan langsung di awal biar layout slider keposisikan dengan bener
+        updateReviewSlider(0);
+        startReviewAutoplay();
+
         reviewDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 stopReviewAutoplay();
@@ -330,9 +312,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
-    // ==================== 9. OLD TESTIMONIAL AUTOMATIC LOOP (FALLBACK COUPLING) ====================
-    const testiCards = document.querySelectorAll('.premium-project-card');
+    // ==================== 9. AUTO-HIGHLIGHT ENGINE UNTUK TESTIMONI ====================
+    const testiCards = document.querySelectorAll('.testimonial-card, .premium-project-card:not(.premium-review-card)');
     let currentHighlightIndex = 0;
     let testimonialInterval;
 
@@ -362,7 +343,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
     // ==================== 10. HOVER AUTOPLAY VIDEO PREVIEW ====================
     const projectVideos = document.querySelectorAll('.project-video-preview');
     if (projectVideos.length > 0) {
@@ -375,16 +355,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
-    // ==================== 11. VIDEO POPUP MODAL SYSTEM (ANTI MULTI-TRIGGER & BUBBLING FIX) ====================
-    // Diubah selektornya ke pemicu play ring tombol murni agar tidak ter-trigger tidak sengaja saat filter di klik
+    // ==================== 11. VIDEO POPUP MODAL SYSTEM ====================
     const playTriggers = document.querySelectorAll(".premium-play-trigger, .studio-card .premium-play-trigger");
     const videoModal = document.getElementById("videoModal") || document.querySelector(".premium-video-modal-overlay");
     const modalVideo = document.getElementById("modalVideo") || document.getElementById("modal-video-target");
     const closeBtn = document.querySelector(".close-modal") || document.querySelector(".modal-close-trigger");
 
     if (videoModal && modalVideo) {
-        // Deteksi jika modal memakai target kontainer iframe terpisah
         const targetIframe = modalVideo.tagName === 'IFRAME' ? modalVideo : modalVideo.querySelector('iframe');
 
         function openModal(videoSrc) {
@@ -394,7 +371,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 modalVideo.src = videoSrc + "?autoplay=1&rel=0";
             }
             videoModal.classList.add("modal-active");
-            document.body.classList.add("active-lightbox"); // Sembunyikan navbar otomatis via CSS penanda
+            document.body.classList.add("active-lightbox"); 
             document.body.style.overflow = "hidden"; 
         }
 
@@ -412,9 +389,8 @@ document.addEventListener("DOMContentLoaded", () => {
         playTriggers.forEach(btn => {
             btn.addEventListener("click", function(e) {
                 e.preventDefault();
-                e.stopPropagation(); // Amankan klik dari penularan event card
+                e.stopPropagation(); 
                 
-                // Cari video link dari data atribut tombol atau naik ke parent card terdekatnya
                 const parentCard = this.closest('.project-box, .studio-card, .premium-project-card');
                 const targetSrc = this.getAttribute("data-video") || (parentCard ? parentCard.getAttribute("data-video") : null);
                                   
@@ -437,12 +413,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
     // ==================== 12. DISCORD AUTO COPY MESSAGE DRAFT ====================
     const discordLink = document.getElementById('discord-link');
     if (discordLink) {
         discordLink.addEventListener('click', (e) => {
-            e.preventDefault(); // Menghentikan redirect instan agar proses copy aman berjalan
+            e.preventDefault(); 
             const pesanDraft = "Halo Zhilvani, saya melihat portofolio kamu dan tertarik untuk berdiskusi seputar project video editing!";
             
             navigator.clipboard.writeText(pesanDraft).then(() => {
